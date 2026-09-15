@@ -88,6 +88,19 @@ class MapLibreView: NSObject, FlutterPlatformView, UIGestureRecognizerDelegate, 
         }
     }
 
+    /// The Dart side clears the registry in `dispose()`, which a hot restart
+    /// never runs, and view ids start again at 0. The successor view then
+    /// finds the dead isolate's FlutterApi under its own id until Dart has
+    /// registered the new one, and a style that loads first calls into it.
+    /// The identity check keeps a late dealloc from wiping the successor's
+    /// entries.
+    deinit {
+        if MapLibreRegistry.getMap(viewId: _viewId) === _mapView {
+            MapLibreRegistry.removeFlutterApi(viewId: _viewId)
+            MapLibreRegistry.removeMap(viewId: _viewId)
+        }
+    }
+
     var api: FlutterApi? {
         MapLibreRegistry.getFlutterApi(viewId: _viewId)
     }
