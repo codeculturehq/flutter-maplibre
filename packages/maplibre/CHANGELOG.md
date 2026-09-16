@@ -8,6 +8,8 @@
 - Android: support a `VectorSource` with `tiles` and no `url`; it threw on the
   missing `url`.
 - Android: keep the `io.flutter.plugin.platform` classes in release builds.
+- Android: remove the ktlint Gradle plugin from the library; apps that use the
+  package could not resolve it.
 
 ## 0.3.6
 
