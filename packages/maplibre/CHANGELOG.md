@@ -1,3 +1,11 @@
+## unreleased
+
+### Bug Fixes
+
+- iOS: fix the platform view's registry entries outliving a hot restart, so a
+  style that loads before the new Dart isolate has registered its `FlutterApi`
+  can no longer call into the dead isolate's one.
+
 ## 0.3.6
 
 Thanks for everyone who contributed in this release!
