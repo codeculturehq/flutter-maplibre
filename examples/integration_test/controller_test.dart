@@ -826,6 +826,20 @@ void test() {
     await tester.pumpAndSettle();
   });
 
+  testWidgets('add VectorSource with tiles', (tester) async {
+    final ctrlCompleter = Completer<MapController>();
+    final app = App(onMapCreated: ctrlCompleter.complete);
+    await tester.pumpWidget(app);
+    final ctrl = await ctrlCompleter.future;
+    const source = VectorSource(
+      id: '1',
+      tiles: ['https://demotiles.maplibre.org/tiles/{z}/{x}/{y}.pbf'],
+      maxZoom: 6,
+    );
+    await ctrl.style?.addSource(source);
+    await tester.pumpAndSettle();
+  });
+
   testWidgets('add BackgroundLayer', (tester) async {
     final ctrlCompleter = Completer<MapController>();
     final app = App(onMapCreated: ctrlCompleter.complete);
