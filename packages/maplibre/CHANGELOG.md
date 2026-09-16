@@ -5,6 +5,8 @@
 - iOS: fix the platform view's registry entries outliving a hot restart, so a
   style that loads before the new Dart isolate has registered its `FlutterApi`
   can no longer call into the dead isolate's one.
+- Android: support a `VectorSource` with `tiles` and no `url`; it threw on the
+  missing `url`.
 
 ## 0.3.6
 
