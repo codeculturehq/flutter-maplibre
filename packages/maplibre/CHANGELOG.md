@@ -7,6 +7,7 @@
   can no longer call into the dead isolate's one.
 - Android: support a `VectorSource` with `tiles` and no `url`; it threw on the
   missing `url`.
+- Android: keep the `io.flutter.plugin.platform` classes in release builds.
 
 ## 0.3.6
 
