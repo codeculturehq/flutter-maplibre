@@ -10,6 +10,8 @@
 - Android: keep the `io.flutter.plugin.platform` classes in release builds.
 - Android: remove the ktlint Gradle plugin from the library; apps that use the
   package could not resolve it.
+- Android: calls on a `StyleController` whose native style was already released
+  are ignored instead of aborting the process with a JNI error.
 
 ## 0.3.6
 
