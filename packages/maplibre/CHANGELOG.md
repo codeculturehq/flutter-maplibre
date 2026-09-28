@@ -1,5 +1,10 @@
 ## unreleased
 
+### Features
+
+- Android: MapLibre Native Android 13.6
+- iOS: MapLibre Native iOS 6.31
+
 ### Bug Fixes
 
 - iOS: fix the platform view's registry entries outliving a hot restart, so a
