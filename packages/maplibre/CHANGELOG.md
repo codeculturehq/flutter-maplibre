@@ -1,5 +1,10 @@
 ## unreleased
 
+### Features
+
+- Android: MapLibre Native Android 13.6
+- iOS: MapLibre Native iOS 6.31
+
 ### Bug Fixes
 
 - iOS: fix the platform view's registry entries outliving a hot restart, so a
@@ -10,6 +15,8 @@
 - Android: keep the `io.flutter.plugin.platform` classes in release builds.
 - Android: remove the ktlint Gradle plugin from the library; apps that use the
   package could not resolve it.
+- Android: calls on a `StyleController` whose native style was already released
+  are ignored instead of aborting the process with a JNI error.
 
 ## 0.3.6
 
