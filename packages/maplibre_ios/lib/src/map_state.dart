@@ -78,7 +78,9 @@ final class MapLibreMapStateIos extends MapLibreMapState {
     );
     MapLibreRegistry.addFlutterApiWithViewId(viewId, api: flutterApi);
 
-    mapView.automaticallyAdjustsContentInset = true;
+    // The Flutter host lays out its own chrome and passes it as camera
+    // padding; an automatic content inset would add the safe area again.
+    mapView.automaticallyAdjustsContentInset = false;
 
     // disable the default UI because they are rebuilt in Flutter
     mapView.showsCompassView = false;
