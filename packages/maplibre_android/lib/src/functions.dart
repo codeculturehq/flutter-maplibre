@@ -1,7 +1,13 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:jni_flutter/jni_flutter.dart';
 import 'package:maplibre_android/src/jni.g.dart';
+
+/// After a blocking (non-`$async`) listener: jni's PortProxyBuilder calls it
+/// directly on the merged UI/platform thread (dartjni.c), outside any isolate
+/// message, so its microtasks wait for the next one — this timer is that one.
+void wakeEventLoop() => Timer.run(() {});
 
 /// Get the Android [Context].
 Context getJContext() => androidApplicationContext.as(Context.type);

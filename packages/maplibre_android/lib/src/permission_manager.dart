@@ -59,5 +59,6 @@ final class _PermissionsListener with jni.$PermissionsListener {
   @override
   void onPermissionResult(bool result) {
     completer.complete(result);
+    wakeEventLoop();
   }
 }
