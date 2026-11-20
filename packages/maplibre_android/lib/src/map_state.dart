@@ -50,6 +50,7 @@ final class MapLibreMapStateAndroid extends MapLibreMapState
             screenPoint: screenLocation.toOffset() / pixelRatio,
           ),
         );
+        wakeEventLoop();
         return true;
       }),
     ),
@@ -68,6 +69,7 @@ final class MapLibreMapStateAndroid extends MapLibreMapState
                 screenPoint: screenLocation.toOffset() / pixelRatio,
               ),
             );
+            wakeEventLoop();
             return true;
           }),
         ),
@@ -268,6 +270,7 @@ final class MapLibreMapStateAndroid extends MapLibreMapState
     camera = getCamera();
     isInitialized = true;
     if (mounted) setState(() {});
+    wakeEventLoop();
   });
 
   @override
@@ -523,6 +526,7 @@ final class MapLibreMapStateAndroid extends MapLibreMapState
     layerManager = LayerManager(styleCtrl, widget.layers);
     // setState is needed to refresh the flutter widgets used in MapLibreMap.children.
     if (mounted) setState(() {});
+    wakeEventLoop();
   }
 
   @override
