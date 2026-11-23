@@ -35,6 +35,14 @@ android {
     }
 }
 
+kotlin {
+    compilerOptions {
+        // Match compileOptions; without it Kotlin targets the host JDK and
+        // KGP 2.4 fails the build when that is newer than Java's target.
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21
+    }
+}
+
 flutter {
     source = "../.."
 }
