@@ -5,6 +5,14 @@ formatter:
   trailing_commas: automate
 
 analyzer:
+  errors:
+    # Flutter 3.50 deprecates package:flutter/material.dart in favour of the
+    # material_ui package. The maplibre widgets stay on the SDK copy for now:
+    # material_ui is a separate copy of Material, so mixing the two breaks
+    # Material/Theme lookups on Flutter 3.47, the minimum supported version.
+    # Keep the info from failing `dart analyze --fatal-infos` until the
+    # widgets move off Material (upstream #672) or 3.47 support is dropped.
+    deprecated_member_use: ignore
   exclude:
     - lib/**.g.dart
     - build/**
